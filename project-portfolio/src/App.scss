@@ -1,0 +1,106 @@
+@charset 'utf-8';
+
+/* Font */
+@font-face {
+	font-family: "S-CoreDream-6Bold";
+	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "S-CoreDream-5Medium";
+	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "S-CoreDream-4Regular";
+	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* reset */
+* {
+	margin: 0px;
+	padding: 0px;
+}
+a {
+	text-decoration: none;
+}
+ul,
+li {
+	list-style: none;
+}
+body {
+	background: #011627;
+	font-family: "S-CoreDream-4Regular";
+}
+.blind {
+	overflow: hidden;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	line-height: 0;
+	white-space: normal;
+	word-wrap: break-word;
+	word-break: break-all;
+	clip: rect(0, 0, 0, 0);
+}
+
+/* background */
+@mixin browsers($info) {
+	animation: $info;
+	-webkit-animation: $info;
+	-moz-animation: $info;
+	-ms-animation: $info;
+	-o-animation: $info;
+}
+.star {
+	position: absolute;
+	display: inline-block;
+	background-color: #f5f314;
+	border-radius: 5px;
+}
+
+@for $i from 1 through 100 {
+	.star#{$i} {
+		$speed: random(15) + 10 + s;
+		$delay: -(random(25)) + s;
+		$size: random(1) + 1px;
+		$opacity: random(100) / 100;
+		top: random(100) + 0%;
+		left: random(100) + 0%;
+		width: $size;
+		height: $size;
+		opacity: $opacity;
+		@include browsers(shiningStar $speed $delay infinite);
+	}
+}
+
+/* animations */
+@keyframes shiningStar {
+	0% {
+		opacity: 1;
+	}
+	20% {
+		opacity: 0.5;
+	}
+	40% {
+		opacity: 0;
+	}
+	60% {
+		opacity: 0.5;
+	}
+	80% {
+		opacity: 0.75;
+	}
+	100% {
+		opacity: 1;
+	}
+}
