@@ -96,7 +96,7 @@ body {
 
 /* header */
 .projcetheader {
-	padding: 70px 0;
+	padding: 120px 0;
 	text-align: center;
 	.projectLogo {
 		color: #fed128;
@@ -112,7 +112,7 @@ body {
 	}
 	.projectTitle {
 		position: relative;
-		padding-top: 70px;
+		padding-top: 100px;
 		color: #28d7fe;
 		font: 30px "Vibur";
 		letter-spacing: 2px;
@@ -121,7 +121,7 @@ body {
 		animation: titleBlink linear infinite 2s;
 		&:before {
 			position: absolute;
-			top: 30px;
+			top: 50px;
 			left: 50%;
 			transform: translateX(-50%);
 			width: 30px;
@@ -133,6 +133,33 @@ body {
 			content: "";
 		}
 	}
+}
+
+/* content */
+.projectSection {
+	min-height: 100vh;
+	padding: 100px 0;
+	box-sizing: border-box;
+}
+.projectHeading {
+	color: #8BC34A;
+	font: 40px "Vibur";
+	text-shadow: 0 0 10px #8BC34A, 0 0 30px #c3bf4a;
+	text-align: center;
+	opacity: 0;
+	transform: translateX(0px) translateY(-20px) translateZ(0px);
+	transition: opacity 500ms ease 0s, transform 500ms ease 0s;
+}
+.projectDesc {
+	margin-top: 50px;
+	color: #eee;
+	font: 24px "Vibur";
+	line-height: 2;
+	text-shadow: 0 0 10px #a6a5a5, 0 0 30px #a6a5a5;
+	text-align: center;
+	opacity: 0;
+	transform: translateX(0px) translateY(-20px) translateZ(0px);
+	transition: opacity 500ms ease 0s, transform 500ms ease 0s;
 }
 
 /* animations */

@@ -24,3 +24,8 @@ React, ES6, SCSS
 - **projcetheader**영역 추가
 - header 영역은 neon sign처럼 애니메이션 구현
 - header 영역은 scroll 유무에 상관없이 애니메이션 실행
+
+**09.03**
+- **projectSection**영역 추가
+- `.projectHeading` & `.projectDesc` 공통 UI 추가
+- 재활용성을 위해 **appearJs()**추가
