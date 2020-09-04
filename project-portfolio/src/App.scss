@@ -103,6 +103,7 @@ body {
 		font: 50px "Vibur";
 		letter-spacing: 2px;
 		text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #fa1c16, 0 0 0.5em #fa1c16, 0 0 0.1em #fa1c16, 0 10px 3px #000;
+		text-transform: uppercase;
 		.words {
 			display: block;
 		}
@@ -137,18 +138,15 @@ body {
 
 /* content */
 .projectSection {
-	min-height: 100vh;
 	padding: 100px 0;
 	box-sizing: border-box;
 }
 .projectHeading {
-	color: #8BC34A;
+	color: #8bc34a;
 	font: 40px "Vibur";
-	text-shadow: 0 0 10px #8BC34A, 0 0 30px #c3bf4a;
+	text-shadow: 0 0 10px #8bc34a, 0 0 30px #c3bf4a;
 	text-align: center;
-	opacity: 0;
-	transform: translateX(0px) translateY(-20px) translateZ(0px);
-	transition: opacity 500ms ease 0s, transform 500ms ease 0s;
+	text-transform: uppercase;
 }
 .projectDesc {
 	margin-top: 50px;
@@ -157,12 +155,40 @@ body {
 	line-height: 2;
 	text-shadow: 0 0 10px #a6a5a5, 0 0 30px #a6a5a5;
 	text-align: center;
+}
+
+/* animations */
+.opacityAni {
 	opacity: 0;
 	transform: translateX(0px) translateY(-20px) translateZ(0px);
 	transition: opacity 500ms ease 0s, transform 500ms ease 0s;
 }
-
-/* animations */
+.revealAni {
+	display: inline-block;
+	position: relative;
+	.reveal-cover {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 0;
+		height: 100%;
+		z-index: 1;
+	}
+	.reveal-text {
+		opacity: 0;
+	}
+	&.loaded {
+		.reveal-cover {
+			-webkit-animation: coverReveal 1.5s ease-in-out;
+			animation: coverReveal 1.5s ease-in-out;
+		}
+		.reveal-text {
+			opacity: 1;
+			-webkit-animation: reveal-text 1.5s ease-in-out;
+			animation: textReveal 1.5s ease-in-out;
+		}
+	}
+}
 @keyframes shiningStar {
 	0% {
 		opacity: 1;
@@ -267,6 +293,35 @@ body {
 		opacity: 1;
 	}
 	100% {
+		opacity: 1;
+	}
+}
+@keyframes coverReveal {
+	0% {
+		width: 0;
+		left: 0;
+	}
+	44% {
+		width: 100%;
+		left: 0;
+	}
+	54% {
+		width: 100%;
+		left: 0;
+	}
+	100% {
+		width: 0;
+		left: 100%;
+	}
+}
+@keyframes textReveal {
+	0% {
+		opacity: 0;
+	}
+	44% {
+		opacity: 0;
+	}
+	54% {
 		opacity: 1;
 	}
 }

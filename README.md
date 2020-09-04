@@ -28,4 +28,8 @@ React, ES6, SCSS
 **09.03**
 - **projectSection**영역 추가
 - `.projectHeading` & `.projectDesc` 공통 UI 추가
-- 재활용성을 위해 **appearJs()**추가
+- 재활용성을 위해 **opacityAniJs()**추가
+
+**09.04**
+- **projectSection02**영역 추가
+- 재활용성을 위해 **revealAniJS()**추가

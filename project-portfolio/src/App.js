@@ -45,36 +45,61 @@ class App extends Component {
 		}
 	};
 
-	appearJs = (selector, delay) => {
-		const elTitle = document.querySelector(selector);
-		elTitle.style.opacity = 1;
-		elTitle.style.transitionDelay = delay + "s";
-		elTitle.style.transform = 'translateX(0px) translateY(0px) translateZ(0px)';
+	opacityAniJs = (selector, delay) => {
+		let elTarget = document.querySelector(selector);
+		elTarget.style.opacity = 1;
+		elTarget.style.transitionDelay = delay + "s";
+		elTarget.style.transform = "translateX(0px) translateY(0px) translateZ(0px)";
 	};
 
-	section1Js = scroll => {
+	revealAniJs = (selector, color) => {
+		let elTarget = document.querySelectorAll(selector);
+		let getRandomColor = (array) => array[Math.floor(Math.random() * array.length)];
+
+		for (let i of elTarget) {
+			let sContent = i.innerHTML;
+			let nColor = getRandomColor(color);
+			i.innerHTML = `<div class="reveal-cover" style="background-color:${nColor}"></div><span class="reveal-text">${sContent}</span>`;
+		}
+	};
+
+	section1Js = (scroll) => {
 		if (scroll >= this.state.aOffs[0] - this.state.nGap) {
 			scroll = scroll - this.state.aOffs[0];
-			this.appearJs(".projectHeading", 0);
-			this.appearJs(".projectDesc", 0.5);
+			this.opacityAniJs(".projectHeading", 0);
+			this.opacityAniJs(".projectDesc", 0.5);
+		}
+	};
+
+	section2Js = (scroll) => {
+		if (scroll >= this.state.aOffs[1] - this.state.nGap) {
+			scroll = scroll - this.state.aOffs[1];
+			let elTarget = document.getElementById("projectSection02").querySelectorAll(".revealAni");
+			let index = 0;
+			for (let i of elTarget) {
+				i.classList.add("loaded");
+				i.querySelector(".reveal-cover").style.animationDelay = index * 0.1 + "s";
+				index++;
+			}
 		}
 	};
 
 	componentDidMount() {
+		this.setPosJs();
 		this.backgroundJs();
 		this.logoJs();
-		this.setPosJs();
+		this.revealAniJs(".revealAni", ["#7f00ff", "#ff00ff", "#0000ff", "#007fff", "#00ffff"]);
+		// onscroll
+		window.onscroll = () => {
+			this.section1Js(window.scrollY);
+			this.section2Js(window.scrollY);
+		};
 	}
 
 	render() {
 		// resize
 		window.onresize = () => {
 			this.setPosJs();
-		};
-
-		// onscroll
-		window.onscroll = () => {
-			this.section1Js(window.scrollY);
 		};
 
 		return (
@@ -87,16 +112,21 @@ class App extends Component {
 					<p className='projectTitle'>publisher & front-end developer</p>
 				</header>
 				<section id='projectSection01' className='projectSection'>
-					<h2 className='projectHeading'>ABOUT Me</h2>
-					<p className="projectDesc">
-						Song YunHye (Female)<br/>
-						1993.04.14(+)<br/>
-						(Mobile) 010-9267-9267<br/>
+					<h2 className='projectHeading opacityAni'>About Me</h2>
+					<p className='projectDesc opacityAni'>
+						Song YunHye (Female)
+						<br />
+						1993.04.14(+)
+						<br />
+						(Mobile) 010-9267-9267
+						<br />
 						co4484co@gmail.com
 					</p>
 				</section>
 				<section id='projectSection02' className='projectSection'>
-					<h2 className='projectHeading'>ABOUT Me</h2>
+					<h2 className='projectHeading'>
+						<span className='revealAni'>My Skills</span>
+					</h2>
 				</section>
 			</div>
 		);
