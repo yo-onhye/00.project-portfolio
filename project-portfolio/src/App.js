@@ -4,7 +4,7 @@ import "./App.scss";
 class App extends Component {
 	state = {
 		aOffs: [],
-		nGap: 150,
+		nGap: 200,
 	};
 
 	setPosJs = () => {
@@ -63,6 +63,22 @@ class App extends Component {
 		}
 	};
 
+	graphAniJs = (selector, delay) => {
+		let elTarget = document.querySelector(selector);
+		let sColor = elTarget.getAttribute("data-color");
+		let nPercent = elTarget.getAttribute("data-percent");
+		let elTargetGraph = elTarget.querySelector(".graph");
+
+		elTargetGraph.innerHTML = `<span class="blind">${nPercent}%</span>`;
+
+		// style 선언
+		elTarget.style.textShadow = `0 0 4px ${sColor}, 0 0 10px ${sColor}`;
+		elTargetGraph.style.animation = 'fillAnimation 1s ease-in';
+		elTargetGraph.style.animationDelay = delay + "s";
+		elTargetGraph.style.borderColor = `rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) ${sColor} ${sColor}`;
+		elTargetGraph.style.transform = `rotate(calc(1deg * (-45 + ${nPercent} * 1.8)))`;
+	};
+
 	section1Js = (scroll) => {
 		if (scroll >= this.state.aOffs[0] - this.state.nGap) {
 			scroll = scroll - this.state.aOffs[0];
@@ -74,13 +90,10 @@ class App extends Component {
 	section2Js = (scroll) => {
 		if (scroll >= this.state.aOffs[1] - this.state.nGap) {
 			scroll = scroll - this.state.aOffs[1];
-			let elTarget = document.getElementById("projectSection02").querySelectorAll(".revealAni");
-			let index = 0;
-			for (let i of elTarget) {
-				i.classList.add("loaded");
-				i.querySelector(".reveal-cover").style.animationDelay = index * 0.1 + "s";
-				index++;
-			}
+			this.opacityAniJs(".projectHeading", 0);
+			this.graphAniJs(".projectGraph1", 0.5);
+			this.graphAniJs(".projectGraph2", 1);
+			this.graphAniJs(".projectGraph3", 1.5);
 		}
 	};
 
@@ -91,8 +104,9 @@ class App extends Component {
 		this.revealAniJs(".revealAni", ["#7f00ff", "#ff00ff", "#0000ff", "#007fff", "#00ffff"]);
 		// onscroll
 		window.onscroll = () => {
-			this.section1Js(window.scrollY);
-			this.section2Js(window.scrollY);
+			let nScroll = window.scrollY;
+			this.section1Js(nScroll);
+			this.section2Js(nScroll);
 		};
 	}
 
@@ -124,9 +138,24 @@ class App extends Component {
 					</p>
 				</section>
 				<section id='projectSection02' className='projectSection'>
-					<h2 className='projectHeading'>
-						<span className='revealAni'>My Skills</span>
-					</h2>
+					<h2 className='projectHeading'>Technical Skills</h2>
+					<div className='projectGraphBox'>
+						<div className='projectGraph projectGraph1' data-percent='80' data-color='#ff3d00'>
+							<span className='title'>HTML5</span>
+							<span className='graph'></span>
+						</div>
+						<div className='projectGraph projectGraph2' data-percent='80' data-color='#039be5'>
+							<span className='title'>CSS3</span>
+							<span className='graph'></span>
+						</div>
+						<div className='projectGraph projectGraph3' data-percent='80' data-color='#fede3e'>
+							<span className='title'>Java Script</span>
+							<span className='graph'></span>
+						</div>
+					</div>
+				</section>
+				<section id='projectSection03' className='projectSection'>
+					<h2 className='projectHeading'>Dev Tools</h2>
 				</section>
 			</div>
 		);

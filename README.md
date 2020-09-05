@@ -33,3 +33,8 @@ React, ES6, SCSS
 **09.04**
 - **projectSection02**영역 추가
 - 재활용성을 위해 **revealAniJS()**추가
+
+**09.06**
+- **projectSection02** layout 완료
+- 그래프 box-shadow는 `overflow:hidden`으로 구현이 어려울것 같아 skill 타이틀만 shadow 처리
+- hover시 skill 정보 제공 구현 예정
