@@ -176,7 +176,7 @@ body {
 		left: 0;
 		width: 300px;
 		height: 300px;
-		border: 50px solid;
+		border: 50px solid rgba(0, 0, 0, 0.15);
 		border-radius: 50%;
 		box-sizing: border-box;
 	}
@@ -188,6 +188,74 @@ body {
 		color: #cacaca;
 		font-size: 22px;
 		font-weight: 600;
+	}
+}
+.projectMultitGraph {
+	overflow: hidden;
+	position: relative;
+	display: inline-block;
+	width: 300px;
+	height: 150px;
+	margin: 30px 20px 0;
+	transform-origin: 50% 0%;
+	box-sizing: border-box;
+	&:before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 300px;
+		height: 300px;
+		border: 50px solid rgba(0, 0, 0, 0.15);
+		border-radius: 50%;
+		box-sizing: border-box;
+		transform-origin: 50% 0%;
+		content: '';
+	}
+	.graph {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 300px;
+		height: 150px;
+		border-top: 0 none !important;
+		border-radius: 0 0 300px 300px;
+		transform-origin: 50% 0% 0;
+		animation: 1s fillGraphAnimation ease-in;
+		box-sizing: border-box;
+		z-index: 5;
+		cursor: pointer;
+		.info {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: 0 5px;
+			border-radius: 2px;
+			box-sizing: border-box;
+			color: #fff;
+			font-weight: 200;
+			font-size: 12px;
+			line-height: 20px;
+			transition: 0.2s ease-in;
+			transform-origin: 0 50% 0;
+			opacity: 0;
+		}
+		&:hover {
+			opacity: 0.8;
+			.info {
+				opacity: 1;
+				left: 30px;
+			}
+		}
+	}
+	.title {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		color: #cacaca;
+		font-size: 22px;
+		font-weight: 600;
+		text-shadow: rgb(245, 252, 255) 0px 0px 4px, rgb(245, 252, 255) 0px 0px 10px;
 	}
 }
 
@@ -365,5 +433,13 @@ body {
 	}
 	50% {
 		transform: rotate(135deg);
+	}
+}
+@keyframes fillGraphAnimation {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(180deg);
 	}
 }

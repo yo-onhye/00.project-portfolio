@@ -73,10 +73,31 @@ class App extends Component {
 
 		// style 선언
 		elTarget.style.textShadow = `0 0 4px ${sColor}, 0 0 10px ${sColor}`;
-		elTargetGraph.style.animation = 'fillAnimation 1s ease-in';
+		elTargetGraph.style.animation = "fillAnimation 1s ease-in";
 		elTargetGraph.style.animationDelay = delay + "s";
 		elTargetGraph.style.borderColor = `rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) ${sColor} ${sColor}`;
 		elTargetGraph.style.transform = `rotate(calc(1deg * (-45 + ${nPercent} * 1.8)))`;
+	};
+
+	multiGraphAniJs = (selector, delay) => {
+		let elTarget = document.querySelector(selector);
+		let elTargetGraph = elTarget.querySelectorAll(".graph");
+
+		for (let i of elTargetGraph) {
+			let sName = i.getAttribute("data-name");
+			let sColor = i.getAttribute("data-color");
+			let nPercent = i.getAttribute("data-percent");
+			let elTargetInfo = i.querySelector(".info");
+			// style 선언
+			i.style.animation = "fillGraphAnimation 1s ease-in";
+			i.style.animationDelay = delay + "s";
+			i.style.border = `50px solid ${sColor}`;
+			i.style.transform = `rotate(calc(1deg * (${nPercent} * 1.8)))`;
+			elTargetInfo.style.counterReset = `varible ${nPercent}`;
+			elTargetInfo.style.transform = `rotate(calc(-1deg * ${nPercent} * 1.8)) translate(-30px, 0px)`;
+			elTargetInfo.style.background = `${sColor}`;
+			elTargetInfo.innerHTML = `${sName} ${nPercent}%`;
+		}
 	};
 
 	section1Js = (scroll) => {
@@ -93,7 +114,7 @@ class App extends Component {
 			this.opacityAniJs(".projectHeading", 0);
 			this.graphAniJs(".projectGraph1", 0.5);
 			this.graphAniJs(".projectGraph2", 1);
-			this.graphAniJs(".projectGraph3", 1.5);
+			this.multiGraphAniJs(".projectGraph3", 1.5);
 		}
 	};
 
@@ -140,17 +161,25 @@ class App extends Component {
 				<section id='projectSection02' className='projectSection'>
 					<h2 className='projectHeading'>Technical Skills</h2>
 					<div className='projectGraphBox'>
-						<div className='projectGraph projectGraph1' data-percent='80' data-color='#ff3d00'>
+						<div className='projectGraph projectGraph1' data-percent='90' data-color='#f7997c'>
 							<span className='title'>HTML5</span>
 							<span className='graph'></span>
 						</div>
-						<div className='projectGraph projectGraph2' data-percent='80' data-color='#039be5'>
+						<div className='projectGraph projectGraph2' data-percent='90' data-color='#faee61'>
 							<span className='title'>CSS3</span>
 							<span className='graph'></span>
 						</div>
-						<div className='projectGraph projectGraph3' data-percent='80' data-color='#fede3e'>
+						<div className='projectMultitGraph projectGraph3'>
 							<span className='title'>Java Script</span>
-							<span className='graph'></span>
+							<span className='graph' data-name='jQuery' data-percent='80' data-color='#cde2c0'>
+								<span className='info'></span>
+							</span>
+							<span className='graph' data-name='ES6' data-percent='40' data-color='#819fd3'>
+								<span className='info'></span>
+							</span>
+							<span className='graph' data-name='React' data-percent='20' data-color='#8ad0ff'>
+								<span className='info'></span>
+							</span>
 						</div>
 					</div>
 				</section>

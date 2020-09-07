@@ -38,3 +38,8 @@ React, ES6, SCSS
 - **projectSection02** layout 완료
 - 그래프 box-shadow는 `overflow:hidden`으로 구현이 어려울것 같아 skill 타이틀만 shadow 처리
 - hover시 skill 정보 제공 구현 예정
+
+**09.07**
+- **multiGraphAniJs()** 추가
+- JavaScript는 세부 요소가 있어 요소 hover시 info 노출
+- 화면상 미세한 border가 보여 수정 예정
