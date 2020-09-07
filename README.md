@@ -28,18 +28,19 @@ React, ES6, SCSS
 **09.03**
 - **projectSection**영역 추가
 - `.projectHeading` & `.projectDesc` 공통 UI 추가
-- 재활용성을 위해 **opacityAniJs()**추가
+- 텍스트 opacity를 제어하는 스크롤 함수 추가 → `opacityAniJs()`
 
 **09.04**
 - **projectSection02**영역 추가
-- 재활용성을 위해 **revealAniJS()**추가
+- 텍스트 위치를 제어하는 스크롤 함수 추가 → `revealAniJS()`
 
 **09.06**
 - **projectSection02** layout 완료
 - 그래프 box-shadow는 `overflow:hidden`으로 구현이 어려울것 같아 skill 타이틀만 shadow 처리
 - hover시 skill 정보 제공 구현 예정
+- 싱글 데이터 그래프 애니메이션 스크롤 함수 추가 → `graphAniJs()`
 
 **09.07**
-- **multiGraphAniJs()** 추가
+- 멀티 데이터 그래프 애니메이션 스크롤 함수 추가 → `multiGraphAniJs()`
 - JavaScript는 세부 요소가 있어 요소 hover시 info 노출
 - 화면상 미세한 border가 보여 수정 예정

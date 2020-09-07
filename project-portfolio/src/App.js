@@ -118,6 +118,19 @@ class App extends Component {
 		}
 	};
 
+	section3Js = (scroll) => {
+		if (scroll >= this.state.aOffs[2] - this.state.nGap) {
+			scroll = scroll - this.state.aOffs[2];
+			let elTarget = document.getElementById("projectSection02").querySelectorAll(".revealAni");
+			let index = 0;
+			for (let i of elTarget) {
+				i.classList.add("loaded");
+				i.querySelector(".reveal-cover").style.animationDelay = index * 0.1 + "s";
+				index++;
+			}
+		}
+	};
+
 	componentDidMount() {
 		this.setPosJs();
 		this.backgroundJs();
@@ -185,6 +198,23 @@ class App extends Component {
 				</section>
 				<section id='projectSection03' className='projectSection'>
 					<h2 className='projectHeading'>Dev Tools</h2>
+					<p className='projectDesc opacityAni'>
+						Github
+						<br />
+						SVN
+						<br />
+						Zeplin
+						<br />
+						Photoshop
+						<br />
+						FTP
+						<br />
+						VScode
+						<br />
+						Redmine
+						<br />
+						Slack
+					</p>
 				</section>
 			</div>
 		);
