@@ -44,3 +44,7 @@ React, ES6, SCSS
 - 멀티 데이터 그래프 애니메이션 스크롤 함수 추가 → `multiGraphAniJs()`
 - JavaScript는 세부 요소가 있어 요소 hover시 info 노출
 - 화면상 미세한 border가 보여 수정 예정
+
+**09.09**
+- 텍스트 타이핑 애니메이션 스크롤 함수 추가 → `typingAniJS()`
+- 모든 영역에 opacityAniJs() 적용을 위해 typingAniJS()에도 delay값 전달 받을 수 있도록 수정

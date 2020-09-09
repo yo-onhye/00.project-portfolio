@@ -82,6 +82,7 @@ class App extends Component {
 	multiGraphAniJs = (selector, delay) => {
 		let elTarget = document.querySelector(selector);
 		let elTargetGraph = elTarget.querySelectorAll(".graph");
+		let index = 0;
 
 		for (let i of elTargetGraph) {
 			let sName = i.getAttribute("data-name");
@@ -90,44 +91,58 @@ class App extends Component {
 			let elTargetInfo = i.querySelector(".info");
 			// style 선언
 			i.style.animation = "fillGraphAnimation 1s ease-in";
-			i.style.animationDelay = delay + "s";
+			i.style.animationDelay = delay + index / 2 + "s";
 			i.style.border = `50px solid ${sColor}`;
 			i.style.transform = `rotate(calc(1deg * (${nPercent} * 1.8)))`;
 			elTargetInfo.style.counterReset = `varible ${nPercent}`;
 			elTargetInfo.style.transform = `rotate(calc(-1deg * ${nPercent} * 1.8)) translate(-30px, 0px)`;
 			elTargetInfo.style.background = `${sColor}`;
 			elTargetInfo.innerHTML = `${sName} ${nPercent}%`;
+			index++;
+		}
+	};
+
+	typingAniJS = (selector, delay) => {
+		let elTarget = document.querySelector(selector);
+		let sTargettxt = elTarget.innerText;
+		let index = 0;
+		elTarget.innerText = "";
+
+		for (let i of sTargettxt) {
+			let newSpan = document.createElement("span");
+			newSpan.classList.add("s" + index);
+			newSpan.innerText = i;
+			elTarget.appendChild(newSpan);
+			newSpan.style.animationDelay = delay + index * 0.05 + "s";
+			index++;
 		}
 	};
 
 	section1Js = (scroll) => {
 		if (scroll >= this.state.aOffs[0] - this.state.nGap) {
 			scroll = scroll - this.state.aOffs[0];
-			this.opacityAniJs(".projectHeading", 0);
-			this.opacityAniJs(".projectDesc", 0.5);
+			this.opacityAniJs("#projectSection01 .projectHeading", 0);
+			this.opacityAniJs("#projectSection01 .projectDesc", 0.5);
 		}
 	};
 
 	section2Js = (scroll) => {
 		if (scroll >= this.state.aOffs[1] - this.state.nGap) {
 			scroll = scroll - this.state.aOffs[1];
-			this.opacityAniJs(".projectHeading", 0);
-			this.graphAniJs(".projectGraph1", 0.5);
-			this.graphAniJs(".projectGraph2", 1);
-			this.multiGraphAniJs(".projectGraph3", 1.5);
+			this.opacityAniJs("#projectSection02 .projectHeading", 0);
+			this.opacityAniJs(".projectGraphBox", 1);
+			this.graphAniJs("#projectSection02 .projectGraph1", 1.5);
+			this.graphAniJs("#projectSection02 .projectGraph2", 2);
+			this.multiGraphAniJs("#projectSection02 .projectGraph3", 2.5);
 		}
 	};
 
 	section3Js = (scroll) => {
 		if (scroll >= this.state.aOffs[2] - this.state.nGap) {
-			scroll = scroll - this.state.aOffs[2];
-			let elTarget = document.getElementById("projectSection02").querySelectorAll(".revealAni");
-			let index = 0;
-			for (let i of elTarget) {
-				i.classList.add("loaded");
-				i.querySelector(".reveal-cover").style.animationDelay = index * 0.1 + "s";
-				index++;
-			}
+			scroll = this.state.aOffs[2];
+			this.opacityAniJs("#projectSection03 .projectHeading", 0);
+			this.opacityAniJs("#projectSection03 .projectDesc", 0.5);
+			this.typingAniJS("#projectSection03 .typingAni", 1);
 		}
 	};
 
@@ -141,6 +156,7 @@ class App extends Component {
 			let nScroll = window.scrollY;
 			this.section1Js(nScroll);
 			this.section2Js(nScroll);
+			this.section3Js(nScroll);
 		};
 	}
 
@@ -161,19 +177,21 @@ class App extends Component {
 				</header>
 				<section id='projectSection01' className='projectSection'>
 					<h2 className='projectHeading opacityAni'>About Me</h2>
-					<p className='projectDesc opacityAni'>
-						Song YunHye (Female)
-						<br />
-						1993.04.14(+)
-						<br />
-						(Mobile) 010-9267-9267
-						<br />
-						co4484co@gmail.com
-					</p>
+					<div className='projectDesc opacityAni'>
+						<p>
+							Song YunHye (Female)
+							<br />
+							1993.04.14(+)
+							<br />
+							(Mobile) 010-9267-9267
+							<br />
+							co4484co@gmail.com
+						</p>
+					</div>
 				</section>
 				<section id='projectSection02' className='projectSection'>
-					<h2 className='projectHeading'>Technical Skills</h2>
-					<div className='projectGraphBox'>
+					<h2 className='projectHeading opacityAni'>Technical Skills</h2>
+					<div className='projectGraphBox opacityAni'>
 						<div className='projectGraph projectGraph1' data-percent='90' data-color='#f7997c'>
 							<span className='title'>HTML5</span>
 							<span className='graph'></span>
@@ -197,24 +215,10 @@ class App extends Component {
 					</div>
 				</section>
 				<section id='projectSection03' className='projectSection'>
-					<h2 className='projectHeading'>Dev Tools</h2>
-					<p className='projectDesc opacityAni'>
-						Github
-						<br />
-						SVN
-						<br />
-						Zeplin
-						<br />
-						Photoshop
-						<br />
-						FTP
-						<br />
-						VScode
-						<br />
-						Redmine
-						<br />
-						Slack
-					</p>
+					<h2 className='projectHeading opacityAni'>Dev Tools</h2>
+					<div className='projectDesc opacityAni'>
+						<p className='typingAni'>Github, SVN, Zeplin, Photoshop, FTP, VScode, Redmine, Slack</p>
+					</div>
 				</section>
 			</div>
 		);
