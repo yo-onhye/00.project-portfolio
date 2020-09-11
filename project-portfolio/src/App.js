@@ -220,6 +220,48 @@ class App extends Component {
 						<p className='typingAni'>Github, SVN, Zeplin, Photoshop, FTP, VScode, Redmine, Slack</p>
 					</div>
 				</section>
+				<section id='projectSection04' className='projectSection'>
+					<h2 className='projectHeading opacityAni'>Work Experience</h2>
+					<div className='projectDesc opacityAni'>
+						<ul className='projectTimeline'>
+							<li>
+								<div className='projectTimeItem'>
+									<strong className='projectTimeName'>SSG 파견 운영 및 유지보수</strong>
+									<span className='projectTimePeriod'>2017.02 ~ 2020.09</span>
+									<span className='projectTimeDetail'>대형 쇼핑몰 운영 및 구축 작업을 통하여 기획/디자인/개발과의 협업 작업</span>
+								</div>
+							</li>
+							<li>
+								<div className='projectTimeItem'>
+									<strong className='projectTimeName'>을지재단 및 산하기관 홈페이지 개편 용역사업</strong>
+									<span className='projectTimePeriod'>2015.08 ~ 2016.04</span>
+									<span className='projectTimeDetail'>강남을지병원, 을지대학교병원, 을지병원, 을지대학교 및 입시, 부속기관 웹 사이트 개발 및 개편</span>
+								</div>
+							</li>
+							<li>
+								<div className='projectTimeItem'>
+									<strong className='projectTimeName'>MOIBA_앱결제안심터</strong>
+									<span className='projectTimePeriod'>2016.05 ~ 2016.06</span>
+									<span className='projectTimeDetail'>앱 결제 안심터 기능 개편 퍼블리싱</span>
+								</div>
+							</li>
+							<li>
+								<div className='projectTimeItem'>
+									<strong className='projectTimeName'>행자부_홈페이지통합(과거사_주민통계)</strong>
+									<span className='projectTimePeriod'>2016.08 ~ 2016.12</span>
+									<span className='projectTimeDetail'>과거사 홈페이지(5종) 통합 구축 및 주민등록 인구통계 시스템 개선, 과거사관련업무지원단 웹사이트 웹 접근성 품질인증마크 획득</span>
+								</div>
+							</li>
+							<li>
+								<div className='projectTimeItem'>
+									<strong className='projectTimeName'>KIST_전북분원</strong>
+									<span className='projectTimePeriod'>2016.10 ~ 2016.11</span>
+									<span className='projectTimeDetail'>KIST 전북 분원 웹사이트 기능 개편 퍼블리싱</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
 			</div>
 		);
 	}

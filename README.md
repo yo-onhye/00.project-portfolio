@@ -48,3 +48,7 @@ React, ES6, SCSS
 **09.09**
 - 텍스트 타이핑 애니메이션 스크롤 함수 추가 → `typingAniJS()`
 - 모든 영역에 opacityAniJs() 적용을 위해 typingAniJS()에도 delay값 전달 받을 수 있도록 수정
+
+**09.11**
+- **Work Experience** 영역 추가
+- **projectTimeline** 구조 추가
