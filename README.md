@@ -52,3 +52,7 @@ React, ES6, SCSS
 **09.11**
 - **Work Experience** 영역 추가
 - **projectTimeline** 구조 추가
+
+**09.12**
+- **projectTimeline** 스타일 추가
+- 세부 구조 클래스명 정리 및 이벤트 타겟 변경

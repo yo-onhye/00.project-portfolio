@@ -122,7 +122,7 @@ class App extends Component {
 		if (scroll >= this.state.aOffs[0] - this.state.nGap) {
 			scroll = scroll - this.state.aOffs[0];
 			this.opacityAniJs("#projectSection01 .projectHeading", 0);
-			this.opacityAniJs("#projectSection01 .projectDesc", 0.5);
+			this.opacityAniJs("#projectSection01 .projectCont", 0.5);
 		}
 	};
 
@@ -130,7 +130,7 @@ class App extends Component {
 		if (scroll >= this.state.aOffs[1] - this.state.nGap) {
 			scroll = scroll - this.state.aOffs[1];
 			this.opacityAniJs("#projectSection02 .projectHeading", 0);
-			this.opacityAniJs(".projectGraphBox", 1);
+			this.opacityAniJs("#projectSection02 .projectCont", 1);
 			this.graphAniJs("#projectSection02 .projectGraph1", 1.5);
 			this.graphAniJs("#projectSection02 .projectGraph2", 2);
 			this.multiGraphAniJs("#projectSection02 .projectGraph3", 2.5);
@@ -141,8 +141,16 @@ class App extends Component {
 		if (scroll >= this.state.aOffs[2] - this.state.nGap) {
 			scroll = this.state.aOffs[2];
 			this.opacityAniJs("#projectSection03 .projectHeading", 0);
-			this.opacityAniJs("#projectSection03 .projectDesc", 0.5);
-			this.typingAniJS("#projectSection03 .typingAni", 1);
+			this.opacityAniJs("#projectSection03 .projectCont", 0.5);
+			this.typingAniJS("#projectSection03 .projectDesc", 1);
+		}
+	};
+
+	section4Js = (scroll) => {
+		if (scroll >= this.state.aOffs[3] - this.state.nGap) {
+			scroll = scroll - this.state.aOffs[3];
+			this.opacityAniJs("#projectSection04 .projectHeading", 0);
+			this.opacityAniJs("#projectSection04 .projectCont", 1);
 		}
 	};
 
@@ -157,6 +165,7 @@ class App extends Component {
 			this.section1Js(nScroll);
 			this.section2Js(nScroll);
 			this.section3Js(nScroll);
+			this.section4Js(nScroll);
 		};
 	}
 
@@ -177,8 +186,8 @@ class App extends Component {
 				</header>
 				<section id='projectSection01' className='projectSection'>
 					<h2 className='projectHeading opacityAni'>About Me</h2>
-					<div className='projectDesc opacityAni'>
-						<p>
+					<div className='projectCont opacityAni'>
+						<p className='projectDesc'>
 							Song YunHye (Female)
 							<br />
 							1993.04.14(+)
@@ -191,38 +200,40 @@ class App extends Component {
 				</section>
 				<section id='projectSection02' className='projectSection'>
 					<h2 className='projectHeading opacityAni'>Technical Skills</h2>
-					<div className='projectGraphBox opacityAni'>
-						<div className='projectGraph projectGraph1' data-percent='90' data-color='#f7997c'>
-							<span className='title'>HTML5</span>
-							<span className='graph'></span>
-						</div>
-						<div className='projectGraph projectGraph2' data-percent='90' data-color='#faee61'>
-							<span className='title'>CSS3</span>
-							<span className='graph'></span>
-						</div>
-						<div className='projectMultitGraph projectGraph3'>
-							<span className='title'>Java Script</span>
-							<span className='graph' data-name='jQuery' data-percent='80' data-color='#cde2c0'>
-								<span className='info'></span>
-							</span>
-							<span className='graph' data-name='ES6' data-percent='40' data-color='#819fd3'>
-								<span className='info'></span>
-							</span>
-							<span className='graph' data-name='React' data-percent='20' data-color='#8ad0ff'>
-								<span className='info'></span>
-							</span>
+					<div className='projectCont opacityAni'>
+						<div className='projectGraphBox'>
+							<div className='projectGraph projectGraph1' data-percent='90' data-color='#f7997c'>
+								<span className='title'>HTML5</span>
+								<span className='graph'></span>
+							</div>
+							<div className='projectGraph projectGraph2' data-percent='90' data-color='#faee61'>
+								<span className='title'>CSS3</span>
+								<span className='graph'></span>
+							</div>
+							<div className='projectMultitGraph projectGraph3'>
+								<span className='title'>Java Script</span>
+								<span className='graph' data-name='jQuery' data-percent='80' data-color='#cde2c0'>
+									<span className='info'></span>
+								</span>
+								<span className='graph' data-name='ES6' data-percent='40' data-color='#819fd3'>
+									<span className='info'></span>
+								</span>
+								<span className='graph' data-name='React' data-percent='20' data-color='#8ad0ff'>
+									<span className='info'></span>
+								</span>
+							</div>
 						</div>
 					</div>
 				</section>
 				<section id='projectSection03' className='projectSection'>
 					<h2 className='projectHeading opacityAni'>Dev Tools</h2>
-					<div className='projectDesc opacityAni'>
-						<p className='typingAni'>Github, SVN, Zeplin, Photoshop, FTP, VScode, Redmine, Slack</p>
+					<div className='projectCont opacityAni'>
+						<p className='projectDesc typingAni'>Github, SVN, Zeplin, Photoshop, FTP, VScode, Redmine, Slack</p>
 					</div>
 				</section>
 				<section id='projectSection04' className='projectSection'>
 					<h2 className='projectHeading opacityAni'>Work Experience</h2>
-					<div className='projectDesc opacityAni'>
+					<div className='projectCont opacityAni'>
 						<ul className='projectTimeline'>
 							<li>
 								<div className='projectTimeItem'>

@@ -155,8 +155,10 @@ body {
 	text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3), 0 0px 15px #fff, 0 0 10px #38eeff, 0 0 50px #38eeff;
 	text-transform: uppercase;
 }
-.projectDesc {
+.projectCont {
 	margin-top: 50px;
+}
+.projectDesc {
 	color: #eee;
 	font: 24px "Vibur";
 	line-height: 2;
@@ -261,6 +263,86 @@ body {
 		font-size: 22px;
 		font-weight: 600;
 		text-shadow: rgb(245, 252, 255) 0px 0px 4px, rgb(245, 252, 255) 0px 0px 10px;
+	}
+}
+.projectTimeline {
+	padding: 50px 0;
+	li {
+		position: relative;
+		width: 6px;
+		margin: 0 auto;
+		padding-top: 50px;
+		background: #fff;
+		&:after {
+			content: "";
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			transform: translateX(-50%);
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			background: inherit;
+			transition: background 0.5s ease-in-out;
+		}
+		.projectTimeItem {
+			visibility: hidden;
+			position: relative;
+			bottom: 0;
+			width: 400px;
+			padding: 20px;
+			border-radius: 5px;
+			background: #f45b69;
+			box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), 0 0px 15px #923840, 0 0 10px #f6bbc1, 0 0 30px #f45b69;
+			color: #eee;
+			opacity: 0;
+			transition: all 0.5s ease-in-out;
+			&:before {
+				content: "";
+				position: absolute;
+				bottom: 7px;
+				width: 0;
+				height: 0;
+				border-style: solid;
+			}
+			.projectTimeName {
+				display: block;
+				margin-bottom: 10px;
+				font-size: 18px;
+				font-weight: bold;
+			}
+			.projectTimePeriod {
+				display: block;
+				margin-bottom: 10px;
+				font-size: 12px;
+			}
+			.projectTimeDetail {
+				display: block;
+				font-size: 14px;
+			}
+		}
+		&:nth-child(odd) {
+			.projectTimeItem {
+				left: 45px;
+				transform: translate3d(200px, 0, 0);
+				&:before {
+					left: -15px;
+					border-width: 8px 16px 8px 0;
+					border-color: transparent #f45b69 transparent transparent;
+				}
+			}
+		}
+		&:nth-child(even) {
+			.projectTimeItem {
+				left: -439px;
+				transform: translate3d(-200px, 0, 0);
+				&:before {
+					right: -15px;
+					border-width: 8px 0 8px 16px;
+					border-color: transparent transparent transparent #f45b69;
+				}
+			}
+		}
 	}
 }
 
@@ -479,5 +561,41 @@ body {
 	to {
 		-webkit-transform: translateZ(0);
 		transform: translateZ(0);
+	}
+}
+
+/* media query */
+@media screen and (max-width: 900px) {
+	.projectTimeline {
+		li {
+			&:nth-child(even) {
+				.projectTimeItem {
+					left: -289px;
+				}
+			}
+		}
+		.projectTimeItem {
+			width: 250px;
+		}
+	}
+}
+@media screen and (max-width: 600px) {
+	.projectTimeline {
+		li {
+			margin-left: 20px;
+			&:nth-child(even) {
+				.projectTimeItem {
+					left: 45px;
+					&:before {
+						left: -15px;
+						border-width: 8px 16px 8px 0;
+						border-color: transparent #f45b69 transparent transparent;
+					}
+				}
+			}
+		}
+		.projectTimeItem {
+			width: calc(100vw - 91px);
+		}
 	}
 }
