@@ -5,6 +5,7 @@ class App extends Component {
 	state = {
 		aOffs: [],
 		nGap: 200,
+		bIsTyping: false,
 	};
 
 	setPosJs = () => {
@@ -118,6 +119,21 @@ class App extends Component {
 		}
 	};
 
+	timelineJs = (selector) => {
+		let elTarget = document.querySelector(selector);
+		let elTargetPoint = elTarget.querySelectorAll(".projectTimePoint");
+		let elTargetItem = elTarget.querySelectorAll('.projectTimeItem');
+		for (let i of elTargetPoint) {
+			i.style.background = "#f45b69";
+			i.style.opacity = 1;
+		}
+		for (let i of elTargetItem) {
+			i.style.transform = "none";
+			i.style.visibility = "visible";
+			i.style.opacity = 1;
+		}
+	}
+
 	section1Js = (scroll) => {
 		if (scroll >= this.state.aOffs[0] - this.state.nGap) {
 			scroll = scroll - this.state.aOffs[0];
@@ -142,7 +158,12 @@ class App extends Component {
 			scroll = this.state.aOffs[2];
 			this.opacityAniJs("#projectSection03 .projectHeading", 0);
 			this.opacityAniJs("#projectSection03 .projectCont", 0.5);
-			this.typingAniJS("#projectSection03 .projectDesc", 1);
+			if (!this.state.bIsTyping) {
+				this.typingAniJS("#projectSection03 .projectDesc", 1);
+				this.setState({
+					bIsTyping : true
+				})
+			}
 		}
 	};
 
@@ -151,6 +172,7 @@ class App extends Component {
 			scroll = scroll - this.state.aOffs[3];
 			this.opacityAniJs("#projectSection04 .projectHeading", 0);
 			this.opacityAniJs("#projectSection04 .projectCont", 1);
+			this.timelineJs("#projectSection04 .projectTimeline");
 		}
 	};
 
@@ -236,6 +258,7 @@ class App extends Component {
 					<div className='projectCont opacityAni'>
 						<ul className='projectTimeline'>
 							<li>
+								<span className='projectTimePoint'></span>
 								<div className='projectTimeItem'>
 									<strong className='projectTimeName'>SSG 파견 운영 및 유지보수</strong>
 									<span className='projectTimePeriod'>2017.02 ~ 2020.09</span>
@@ -243,6 +266,7 @@ class App extends Component {
 								</div>
 							</li>
 							<li>
+								<span className='projectTimePoint'></span>
 								<div className='projectTimeItem'>
 									<strong className='projectTimeName'>을지재단 및 산하기관 홈페이지 개편 용역사업</strong>
 									<span className='projectTimePeriod'>2015.08 ~ 2016.04</span>
@@ -250,6 +274,7 @@ class App extends Component {
 								</div>
 							</li>
 							<li>
+								<span className='projectTimePoint'></span>
 								<div className='projectTimeItem'>
 									<strong className='projectTimeName'>MOIBA_앱결제안심터</strong>
 									<span className='projectTimePeriod'>2016.05 ~ 2016.06</span>
@@ -257,6 +282,7 @@ class App extends Component {
 								</div>
 							</li>
 							<li>
+								<span className='projectTimePoint'></span>
 								<div className='projectTimeItem'>
 									<strong className='projectTimeName'>행자부_홈페이지통합(과거사_주민통계)</strong>
 									<span className='projectTimePeriod'>2016.08 ~ 2016.12</span>
@@ -264,6 +290,7 @@ class App extends Component {
 								</div>
 							</li>
 							<li>
+								<span className='projectTimePoint'></span>
 								<div className='projectTimeItem'>
 									<strong className='projectTimeName'>KIST_전북분원</strong>
 									<span className='projectTimePeriod'>2016.10 ~ 2016.11</span>

@@ -115,7 +115,7 @@ body {
 			display: block;
 		}
 		.blink {
-			animation: textBlink linear infinite 2s;
+			@include browsers(textBlink linear infinite 2s);
 		}
 	}
 	.projectTitle {
@@ -126,7 +126,7 @@ body {
 		letter-spacing: 2px;
 		text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #1041ff, 0 0 0.5em #1041ff, 0 0 0.1em #1041ff, 0 10px 3px #000;
 		text-transform: uppercase;
-		animation: titleBlink linear infinite 2s;
+		@include browsers(titleBlink linear infinite 2s);
 		&:before {
 			position: absolute;
 			top: 50px;
@@ -137,7 +137,7 @@ body {
 			background-color: #83f52c;
 			border-radius: 2px;
 			box-shadow: 0 0 0.1em #83f52c;
-			animation: blockBlink linear infinite 2s;
+			@include browsers(blockBlink linear infinite 2s);
 			content: "";
 		}
 	}
@@ -227,7 +227,7 @@ body {
 		border-top: 0 none !important;
 		border-radius: 0 0 300px 300px;
 		transform-origin: 50% 0% 0;
-		animation: 1s fillGraphAnimation ease-in;
+		@include browsers(fillGraphAnimation ease-in 1s);
 		box-sizing: border-box;
 		z-index: 5;
 		cursor: pointer;
@@ -273,28 +273,54 @@ body {
 		margin: 0 auto;
 		padding-top: 50px;
 		background: #fff;
-		&:after {
-			content: "";
+		.projectTimePoint {
 			position: absolute;
 			left: 50%;
 			bottom: 0;
 			transform: translateX(-50%);
-			width: 30px;
-			height: 30px;
+			width: 24px;
+			height: 24px;
 			border-radius: 50%;
-			background: inherit;
-			transition: background 0.5s ease-in-out;
+			background: #f45b69;
+			transition: all 0.4s 0.2s;
+			&:before {
+				content: "";
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 24px;
+				height: 24px;
+				background-color: transparent;
+				border: 2px solid #f45b69;
+				border-radius: 50%;
+				@include browsers(bounceCircle infinite 1.6s 0.4s);
+				content: "";
+			}
+			&:after {
+				content: "";
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 24px;
+				height: 24px;
+				background-color: transparent;
+				border: 2px solid #f45b69;
+				border-radius: 50%;
+				@include browsers(bounceCircle infinite 0.8s 0.4s);
+			}
 		}
 		.projectTimeItem {
 			visibility: hidden;
 			position: relative;
 			bottom: 0;
 			width: 400px;
-			padding: 20px;
+			padding: 20px 15px;
 			border-radius: 5px;
+			box-sizing: border-box;
 			background: #f45b69;
 			box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2), 0 0px 15px #923840, 0 0 10px #f6bbc1, 0 0 30px #f45b69;
 			color: #eee;
+			word-break: keep-all;
 			opacity: 0;
 			transition: all 0.5s ease-in-out;
 			&:before {
@@ -368,26 +394,23 @@ body {
 	}
 	&.loaded {
 		.reveal-cover {
-			-webkit-animation: coverReveal 1.5s ease-in-out;
-			animation: coverReveal 1.5s ease-in-out;
+			@include browsers(coverReveal ease-in-out 1.5s);
 		}
 		.reveal-text {
 			opacity: 1;
-			-webkit-animation: textReveal 1.5s ease-in-out;
-			animation: textReveal 1.5s ease-in-out;
+			@include browsers(textReveal ease-in-out 1.5s);
 		}
 	}
 }
 .typingAni {
 	span {
 		opacity: 0;
-		animation: textTyping 0.7s ease-in-out;
+		@include browsers(textTyping ease-in-out 0.7s);
 		animation-fill-mode: forwards;
 	}
 }
 .slideLeftAni {
-	-webkit-animation-name: slideInLeft;
-	animation-name: slideInLeft;
+	@include browsers(slideInLeft);
 }
 @keyframes shiningStar {
 	0% {
@@ -563,19 +586,29 @@ body {
 		transform: translateZ(0);
 	}
 }
+@keyframes bounceCircle {
+	0% {
+		opacity: 1;
+		transform: scale(0);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(2);
+	}
+}
 
 /* media query */
 @media screen and (max-width: 900px) {
 	.projectTimeline {
 		li {
+			.projectTimeItem {
+				width: 250px;
+			}
 			&:nth-child(even) {
 				.projectTimeItem {
 					left: -289px;
 				}
 			}
-		}
-		.projectTimeItem {
-			width: 250px;
 		}
 	}
 }
@@ -583,6 +616,9 @@ body {
 	.projectTimeline {
 		li {
 			margin-left: 20px;
+			.projectTimeItem {
+				width: calc(100vw - 140px);
+			}
 			&:nth-child(even) {
 				.projectTimeItem {
 					left: 45px;
@@ -593,9 +629,6 @@ body {
 					}
 				}
 			}
-		}
-		.projectTimeItem {
-			width: calc(100vw - 91px);
 		}
 	}
 }

@@ -56,3 +56,8 @@ React, ES6, SCSS
 **09.12**
 - **projectTimeline** 스타일 추가
 - 세부 구조 클래스명 정리 및 이벤트 타겟 변경
+
+**09.13**
+- 타임라인 CSS관련 애니메이션 스크롤 함수 추가 → `timelineJs()`
+- SCSS파일 정리
+- typingAni() 스크롤이 될때마다 실행되는 오류 수정을 위해 **bIsTyping** 값을 추가
