@@ -227,7 +227,6 @@ body {
 		border-top: 0 none !important;
 		border-radius: 0 0 300px 300px;
 		transform-origin: 50% 0% 0;
-		@include browsers(fillGraphAnimation ease-in 1s);
 		box-sizing: border-box;
 		z-index: 5;
 		cursor: pointer;

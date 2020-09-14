@@ -61,3 +61,7 @@ React, ES6, SCSS
 - 타임라인 CSS관련 애니메이션 스크롤 함수 추가 → `timelineJs()`
 - SCSS파일 정리
 - typingAni() 스크롤이 될때마다 실행되는 오류 수정을 위해 **bIsTyping** 값을 추가
+
+**09.14**
+- 타임라인 아이템이 순차적으로 실행되도록 애니메이션 추가
+- **projectMultitGraph()** animation delay 오류 수정

@@ -83,7 +83,6 @@ class App extends Component {
 	multiGraphAniJs = (selector, delay) => {
 		let elTarget = document.querySelector(selector);
 		let elTargetGraph = elTarget.querySelectorAll(".graph");
-		let index = 0;
 
 		for (let i of elTargetGraph) {
 			let sName = i.getAttribute("data-name");
@@ -92,14 +91,13 @@ class App extends Component {
 			let elTargetInfo = i.querySelector(".info");
 			// style 선언
 			i.style.animation = "fillGraphAnimation 1s ease-in";
-			i.style.animationDelay = delay + index / 2 + "s";
+			i.style.animationDelay = delay + "s";
 			i.style.border = `50px solid ${sColor}`;
 			i.style.transform = `rotate(calc(1deg * (${nPercent} * 1.8)))`;
 			elTargetInfo.style.counterReset = `varible ${nPercent}`;
 			elTargetInfo.style.transform = `rotate(calc(-1deg * ${nPercent} * 1.8)) translate(-30px, 0px)`;
 			elTargetInfo.style.background = `${sColor}`;
 			elTargetInfo.innerHTML = `${sName} ${nPercent}%`;
-			index++;
 		}
 	};
 
@@ -123,14 +121,18 @@ class App extends Component {
 		let elTarget = document.querySelector(selector);
 		let elTargetPoint = elTarget.querySelectorAll(".projectTimePoint");
 		let elTargetItem = elTarget.querySelectorAll('.projectTimeItem');
+		let index = 0;
 		for (let i of elTargetPoint) {
 			i.style.background = "#f45b69";
 			i.style.opacity = 1;
+			i.style.transitionDelay = 1.2 + index +"s";
 		}
 		for (let i of elTargetItem) {
 			i.style.transform = "none";
 			i.style.visibility = "visible";
 			i.style.opacity = 1;
+			i.style.transitionDelay = 1.2 + index +"s";
+			index++;
 		}
 	}
 
@@ -234,7 +236,7 @@ class App extends Component {
 							</div>
 							<div className='projectMultitGraph projectGraph3'>
 								<span className='title'>Java Script</span>
-								<span className='graph' data-name='jQuery' data-percent='80' data-color='#cde2c0'>
+								<span className='graph' data-name='jQuery' data-percent='80' data-color='#abbcc6'>
 									<span className='info'></span>
 								</span>
 								<span className='graph' data-name='ES6' data-percent='40' data-color='#819fd3'>
